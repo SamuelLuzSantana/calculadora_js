@@ -1,5 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap');
 
-.buttons{
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formulario {
+    height: 40em;
+    width: 23.2em;
+    margin-top: 5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px 24px;
+    border-radius: 20px;
+    background-color: #fefefe;
+    box-shadow: 0 6px 12px rgb(0 0 0 / 20%);
+}
+
+input[type=text] {
+    width: 100%;
+    /* padding: 26px 0px 5px; */
+    box-sizing: border-box;
+    font-size: 65px;
+    text-align: right;
+    font-family: 'Poppins', Arial, sans-serif;
+    background: rgba(255, 255, 255, 0);
+    border: none;
+    outline: none;
+}
+
+#history {
+    font-size: 27px;
+    text-align: right;
+    color: rgb(77, 77, 77);
+}
+
+input[type=button] {
+    font-size: 23px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+        rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+
+    border-radius: 15px;
+}
+
+input[type=button]:focus {
+
+    box-shadow: inset rgba(0, 0, 0, 0.18) 0px 2px 4px;
+}
+
+input[type=button]:hover {
+    transform: scale(1.05);
+    transition: transform 0.45s;
+}
+
+
+.buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    height: 400px;
+    grid-gap: 10px;
 }

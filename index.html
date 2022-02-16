@@ -8,45 +8,76 @@
     <title>Calculadora</title>
 </head>
 <body>
-    <div class="container">
-        <form action="#" name="forms">
 
-            <input type="text" name="resposta">
+    <main>
 
-            <div class="buttons">
-                <input type="button" value="AC" onclick="forms.resposta.value = ''">
-                <input type="button" value="DEL"   onclick="forms.resposta.value =    forms.resposta.value.substr(0 , forms.resposta.value.length -1)   "   >
-                <input type="button" value="%" onclick="forms.resposta.value += '%'">
-                <input type="button" value="/"  onclick=" forms.resposta.value +='/' ">
+        <div class="container">
+            <form action="#" name="forms" class="formulario">
+    
+                               
+                <div class="results">
+                    <input type="text" name="resposta" id="respostaa">
+                    <p id="history"></p>
+                </div>
+    
+                <div class="buttons">
+                    <input type="button" value="AC" onclick="resetResult()">
+                    <input type="button" value="DEL"   onclick="forms.resposta.value =    forms.resposta.value.substr(0 , forms.resposta.value.length -1)   "   >
+                    <input type="button" value="%" onclick="forms.resposta.value += '%'">
+                    <input type="button" value="/"  onclick=" forms.resposta.value +='/' ">
+    
+    
+                    <input type="button" value="7" onclick=" forms.resposta.value +='7' ">
+                    <input type="button" value="8" onclick=" forms.resposta.value +='8' ">
+                    <input type="button" value="9" onclick=" forms.resposta.value +='9' ">
+                    <input type="button" value="X" onclick=" forms.resposta.value +='*' ">
+    
+                    <input type="button" value="4" onclick=" forms.resposta.value +='4' ">
+                    <input type="button" value="5" onclick=" forms.resposta.value +='5' ">
+                    <input type="button" value="6" onclick=" forms.resposta.value +='6' ">
+                    <input type="button" value="-" onclick=" forms.resposta.value +='-' ">
+    
+                    
+                    <input type="button" value="1" onclick=" forms.resposta.value +='1' ">
+                    <input type="button" value="2" onclick=" forms.resposta.value +='2' ">
+                    <input type="button" value="3" onclick=" forms.resposta.value +='3' ">
+                    <input type="button" value="+" onclick=" forms.resposta.value +='+' ">
+    
+                    <input type="button" value="0" onclick=" forms.resposta.value +='0' ">
+                    <input type="button" value="00" onclick=" forms.resposta.value +='00' ">
+                    <input type="button" value=" , " onclick=" forms.resposta.value +=',' ">
+    
+                    <input type="button" value="=" onclick="equal()" >
+    
+    
+                </div>
+    
+    
+            </form>
+        </div>
+
+    </main>
 
 
-                <input type="button" value="7" onclick=" forms.resposta.value +='7' ">
-                <input type="button" value="8" onclick=" forms.resposta.value +='8' ">
-                <input type="button" value="9" onclick=" forms.resposta.value +='9' ">
-                <input type="button" value="X" onclick=" forms.resposta.value +='*' ">
+    
 
-                <input type="button" value="4" onclick=" forms.resposta.value +='4' ">
-                <input type="button" value="5" onclick=" forms.resposta.value +='5' ">
-                <input type="button" value="6" onclick=" forms.resposta.value +='6' ">
-                <input type="button" value="-" onclick=" forms.resposta.value +='-' ">
-
-                
-                <input type="button" value="1" onclick=" forms.resposta.value +='1' ">
-                <input type="button" value="2" onclick=" forms.resposta.value +='2' ">
-                <input type="button" value="3" onclick=" forms.resposta.value +='3' ">
-                <input type="button" value="+" onclick=" forms.resposta.value +='+' ">
-
-                <input type="button" value="0" onclick=" forms.resposta.value +='0' ">
-                <input type="button" value="00" onclick=" forms.resposta.value +='00' ">
-                <input type="button" value=" , " onclick=" forms.resposta.value +=',' ">
-
-                <input type="button" value="=" onclick="forms.resposta.value = eval(forms.resposta.value) " >
-
-
-            </div>
-
-
-        </form>
-    </div>
 </body>
+
+    <script>
+        
+        function equal(){
+
+            let historico = forms.resposta.value
+            document.getElementById("history").innerHTML = historico;
+
+            forms.resposta.value = eval(forms.resposta.value); 
+        }
+
+        function resetResult(){
+            forms.resposta.value = '';
+            document.getElementById("history").innerHTML = '';
+        }
+
+    </script>
+
 </html>
