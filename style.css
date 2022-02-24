@@ -3,29 +3,36 @@
 * {
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
+    box-sizing: border-box;   
 }
 
 html {
-    font-family: 'Poppins', Arial, sans-serif;
+    font-family: 'Poppins', Arial, sans-serif;    
+
+    --bg: #ffffff;  
+    --bg2: #fefefe;
+    --text-color: #000;
+    --text-color2: #4d4d4d;
+    --button-color: #000;
 }
 
 main {
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100vh;
+    background-color: var(--bg);
 }
 
 .formulario {
-    height: 40em;
+    height: 41em;
     width: 23.2em;
-    margin-top: 5em;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 30px 24px;
+    padding: 17px 25px;
     border-radius: 20px;
-    background-color: #fefefe;
+    background-color: var(--bg-color);
     box-shadow: 0 6px 12px rgb(0 0 0 / 20%);
 }
 
@@ -39,12 +46,13 @@ input[type=text] {
     background: rgba(255, 255, 255, 0);
     border: none;
     outline: none;
+    color: var(--text-color);
 }
 
 #history {
     font-size: 27px;
     text-align: right;
-    color: rgb(77, 77, 77);
+    color: var(--text-color2);
 }
 
 input[type=button] {
@@ -55,6 +63,7 @@ input[type=button] {
         rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 
     border-radius: 15px;
+    color: var(--button-color);
 }
 
 input[type=button]:focus {
@@ -73,4 +82,46 @@ input[type=button]:hover {
     grid-template-columns: repeat(4, 1fr);
     height: 400px;
     grid-gap: 10px;
+}
+
+input[type=checkbox]{
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 52px;
+    height: 27px;
+    background: grey;
+    float: left;
+    border-radius: 100px;
+    position: relative;
+}
+
+label::after{
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    background-color: #fefefe;
+    border-radius: 90px;
+    transition: 0.3s;
+}
+
+input:checked + label {
+    background-color: #969292;
+}
+
+input:checked + label::after {
+    left: calc(100% - 5px);
+    transform: translateX(-100%);
+}
+
+label:active:after {
+    width: 45px;
 }

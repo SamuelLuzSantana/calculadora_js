@@ -1,83 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
     <title>Calculadora</title>
 </head>
+
 <body>
 
     <main>
 
         <div class="container">
             <form action="#" name="forms" class="formulario">
-    
-                               
+
+                <div class="togle">
+                    <input id="switch" name="theme" type="checkbox">
+                    <label for="switch"> Togle </label>
+                </div>
+
                 <div class="results">
                     <input type="text" name="resposta" id="respostaa">
                     <p id="history"></p>
                 </div>
-    
+
                 <div class="buttons">
                     <input type="button" value="AC" onclick="resetResult()">
-                    <input type="button" value="DEL"   onclick="forms.resposta.value =    forms.resposta.value.substr(0 , forms.resposta.value.length -1)   "   >
+                    <input type="button" value="DEL"
+                        onclick="forms.resposta.value =    forms.resposta.value.substr(0 , forms.resposta.value.length -1)   ">
                     <input type="button" value="%" onclick="forms.resposta.value += '%'">
-                    <input type="button" value="/"  onclick=" forms.resposta.value +='/' ">
-    
-    
+                    <input type="button" value="/" onclick=" forms.resposta.value +='/' ">
+
+
                     <input type="button" value="7" onclick=" forms.resposta.value +='7' ">
                     <input type="button" value="8" onclick=" forms.resposta.value +='8' ">
                     <input type="button" value="9" onclick=" forms.resposta.value +='9' ">
                     <input type="button" value="X" onclick=" forms.resposta.value +='*' ">
-    
+
                     <input type="button" value="4" onclick=" forms.resposta.value +='4' ">
                     <input type="button" value="5" onclick=" forms.resposta.value +='5' ">
                     <input type="button" value="6" onclick=" forms.resposta.value +='6' ">
                     <input type="button" value="-" onclick=" forms.resposta.value +='-' ">
-    
-                    
+
+
                     <input type="button" value="1" onclick=" forms.resposta.value +='1' ">
                     <input type="button" value="2" onclick=" forms.resposta.value +='2' ">
                     <input type="button" value="3" onclick=" forms.resposta.value +='3' ">
                     <input type="button" value="+" onclick=" forms.resposta.value +='+' ">
-    
+
                     <input type="button" value="0" onclick=" forms.resposta.value +='0' ">
                     <input type="button" value="00" onclick=" forms.resposta.value +='00' ">
                     <input type="button" value=" , " onclick=" forms.resposta.value +=',' ">
-    
-                    <input type="button" value="=" onclick="equal()" >
-    
-    
+
+                    <input type="button" value="=" onclick="equal()">
+
+
                 </div>
-    
-    
+
+
             </form>
         </div>
 
     </main>
 
 
-    
+
 
 </body>
 
-    <script>
+<script>
+
+    function equal() {
+
+        let historico = forms.resposta.value
+        document.getElementById("history").innerHTML = historico;
+
+        forms.resposta.value = eval(forms.resposta.value);
+    }
+
+    function resetResult() {
+        forms.resposta.value = '';
+        document.getElementById("history").innerHTML = '';
+    }
+
+    // Dark mode 
+    const html = document.querySelector("html");
+    const checkbox = document.querySelector("input[name=theme]");
+
+    const getStyle = (elemento, style) => 
+        window
+            .getComputedStyle(elemento)
+            .getPropertyValue(style)
+
+    const initialColors = {
+        bg: getStyle(html, "--bg"),
+        bg2: getStyle(html, "--bg2"),        
+        textColor: getStyle(html,"--text-color"),
+        textColor2: getStyle(html,"--text-color2"),
+        buttonColor: getStyle(html,"--button-color")
+    }
+
+    const darkMode = {
+        bg: "#141d26",
+        backgroundColor: "#243447",
+        textColor: "#ffff" ,
+        textColor2: "#c51f5d",
+        buttonColor: "#fff"
+    }
+
+    const transfomKey = key => 
+        "--" + key.replace(/([A-Z])/, "-$1").toLowerCase()
+
+
+
+    const changeColors = (colors) => {
+        Object.keys(colors).map(key =>
+            html.style.setProperty(transfomKey(key), colors[key])
+        )
         
-        function equal(){
+    }
 
-            let historico = forms.resposta.value
-            document.getElementById("history").innerHTML = historico;
 
-            forms.resposta.value = eval(forms.resposta.value); 
-        }
 
-        function resetResult(){
-            forms.resposta.value = '';
-            document.getElementById("history").innerHTML = '';
-        }
 
-    </script>
+    checkbox.addEventListener("change", ({target}) => {
+        target.checked ? changeColors(darkMode) : changeColors(initialColors)
+    })
+
+
+
+</script>
 
 </html>
