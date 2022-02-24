@@ -12,7 +12,7 @@ html {
     --bg: #ffffff;  
     --bg2: #fefefe;
     --text-color: #000;
-    --text-color2: #4d4d4d;
+    --history-color: #4d4d4d;
     --button-color: #000;
 }
 
@@ -32,7 +32,7 @@ main {
     justify-content: space-between;
     padding: 17px 25px;
     border-radius: 20px;
-    background-color: var(--bg-color);
+    background-color: var(--bg2);
     box-shadow: 0 6px 12px rgb(0 0 0 / 20%);
 }
 
@@ -52,7 +52,7 @@ input[type=text] {
 #history {
     font-size: 27px;
     text-align: right;
-    color: var(--text-color2);
+    color: var(--history-color);
 }
 
 input[type=button] {
@@ -95,7 +95,7 @@ label {
     text-indent: -9999px;
     width: 52px;
     height: 27px;
-    background: grey;
+    background: #19212a;
     float: left;
     border-radius: 100px;
     position: relative;
@@ -114,7 +114,7 @@ label::after{
 }
 
 input:checked + label {
-    background-color: #969292;
+    background-color: var(--history-color);
 }
 
 input:checked + label::after {
